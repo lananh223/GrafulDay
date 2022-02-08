@@ -44,7 +44,7 @@
         app:layout_constraintHorizontal_bias="0.856"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/previous_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -54,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/day_image" />
 
-    <ImageButton
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/next_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -63,6 +63,5 @@
         app:layout_constraintBottom_toBottomOf="@id/day_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/day_image" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
