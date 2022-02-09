@@ -4,11 +4,8 @@
 
 Users can use the app 2 ways:
 * New users: practice 28 days orderly from day 1 to day 2
-* When users are done with the 28 days: user can click on random button to pick random day for revising 
-
-<p align="center">
-  <img src="https://imgur.com/a/kIcgOer" />
-</p>
+* When users are done with the 28-day: user can click on random button to pick random day for revising 
+<img src="https://user-images.githubusercontent.com/90428483/153096455-f015b1ca-8d66-4510-996d-9ef69358d7c1.png">
 
 # Technical Concepts
 
