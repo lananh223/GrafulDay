@@ -12,6 +12,7 @@ Users can use the app 2 ways:
   * Activity 
   * MVC Design
   * Shared Preferences
+  * Toast
   * UI Design: ConstrainLayout
 
 # Contact Me!
