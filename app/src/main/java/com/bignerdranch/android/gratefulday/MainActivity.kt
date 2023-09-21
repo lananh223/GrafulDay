@@ -13,8 +13,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var chooseButton: Button
     private lateinit var resultImage: ImageView
     private lateinit var rankButton: Button
+    private lateinit var resetButton: Button
     private lateinit var nextButton: ImageButton
     private lateinit var previousButton: ImageButton
+
     private var resultNumber: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         rankButton = findViewById(R.id.rank_button)
         nextButton = findViewById(R.id.next_button)
         previousButton = findViewById(R.id.previous_button)
+        resetButton = findViewById(R.id.reset_button)
 
         chooseButton.setOnClickListener {
             Toast.makeText(
@@ -44,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
 
-            if (resultNumber in 0.. 27) {
+            if (resultNumber in 0..27) {
                 resultNumber++
             } else {
                 resultNumber = 0
@@ -72,6 +75,11 @@ class MainActivity : AppCompatActivity() {
             setImage()
             saveResultNumber()
         }
+
+        resetButton.setOnClickListener {
+            resultNumber = 0
+            setImage()
+        }
     }
 
     override fun onStart() {
@@ -79,15 +87,15 @@ class MainActivity : AppCompatActivity() {
         updateResultNumber()
     }
 
-    private fun saveResultNumber(){
+    private fun saveResultNumber() {
         val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
-        with(sharedPreferences.edit()){
+        with(sharedPreferences.edit()) {
             putInt("resultNumber", resultNumber)
             apply()
         }
     }
 
-    private fun updateResultNumber(){
+    private fun updateResultNumber() {
         val sharedPreferences = getPreferences(Context.MODE_PRIVATE)
         resultNumber = sharedPreferences.getInt("resultNumber", -1)
         setImage()
@@ -124,7 +132,7 @@ class MainActivity : AppCompatActivity() {
             26 -> R.drawable.grateful_26
             27 -> R.drawable.grateful_27
             28 -> R.drawable.grateful_28
-            else ->R.drawable.grateful_0
+            else -> R.drawable.grateful_0
         }
         resultImage.setImageResource(drawableResource)
     }
