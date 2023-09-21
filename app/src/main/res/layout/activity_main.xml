@@ -10,23 +10,20 @@
 
     <ImageView
         android:id="@+id/day_image"
-        android:layout_width="380dp"
+        android:layout_width="match_parent"
         android:layout_height="580dp"
         android:src="@drawable/grateful_0"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.218"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.111" />
+        android:contentDescription="@null" />
 
     <Button
         android:id="@+id/choose_button"
         android:layout_width="149dp"
         android:layout_height="68dp"
-        android:text="Chọn ngẫu nhiên"
+        android:text="@string/choose_random"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.141"
@@ -38,12 +35,36 @@
         android:id="@+id/rank_button"
         android:layout_width="149dp"
         android:layout_height="68dp"
-        android:text="Theo thứ tự"
+        android:text="@string/follow_ordered"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/day_image"
+        app:layout_constraintVertical_bias="0.274" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="149dp"
+        android:layout_height="68dp"
+        android:text="@string/reset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/choose_button"
+        app:layout_constraintVertical_bias="0.274" />
+
+    <Button
+        android:id="@+id/go_to_button"
+        android:layout_width="149dp"
+        android:layout_height="68dp"
+        android:text="@string/go_to"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rank_button"
         app:layout_constraintVertical_bias="0.274" />
 
     <androidx.appcompat.widget.AppCompatImageButton

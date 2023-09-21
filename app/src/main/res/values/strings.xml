@@ -6,6 +6,10 @@
     <string name="next_button">Next</string>
     <string name="random_choice">Chọn ngẫu nhiên</string>
     <string name="rank_choice">Theo thứ tự</string>
+    <string name="go_to">Đi tới trang</string>
+    <string name="reset">Reset</string>
+    <string name="choose_random">Chọn ngẫu nhiên</string>
+    <string name="follow_ordered">Theo thứ tự</string>
 
 
 </resources>
