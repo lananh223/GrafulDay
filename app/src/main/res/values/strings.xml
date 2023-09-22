@@ -10,6 +10,8 @@
     <string name="reset">Reset</string>
     <string name="choose_random">Chọn ngẫu nhiên</string>
     <string name="follow_ordered">Theo thứ tự</string>
+    <string name="search">Search\n</string>
+    <string name="clear_search">Clear</string>
 
 
 </resources>

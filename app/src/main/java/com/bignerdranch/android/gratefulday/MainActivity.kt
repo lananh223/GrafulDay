@@ -1,12 +1,18 @@
 package com.bignerdranch.android.gratefulday
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 
 class MainActivity : AppCompatActivity() {
 
@@ -80,6 +86,53 @@ class MainActivity : AppCompatActivity() {
             resultNumber = 0
             setImage()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.search_menu, menu)
+
+        val searchItem: MenuItem = menu.findItem(R.id.menu_item_search)
+        val searchView = searchItem.actionView as SearchView
+
+        searchView.apply {
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(queryText: String): Boolean {
+                    Log.d(TAG, "QueryTextSubmit: $queryText")
+                    try {
+                        if (queryText.toInt() in 0..28) {
+                            resultNumber = queryText.toInt()
+                            setImage()
+                        } else {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Please enter number of the page you want to go",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Only valid page number is accepted",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+
+
+                    return true
+                }
+
+                override fun onQueryTextChange(queryText: String?): Boolean {
+                    Log.d(TAG, "QueryTextChange: $queryText")
+                    return false
+                }
+            })
+
+            setOnClickListener {
+                searchView.setQuery(query, false)
+            }
+        }
+        return true
     }
 
     override fun onStart() {
