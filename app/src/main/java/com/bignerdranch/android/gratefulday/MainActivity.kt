@@ -106,19 +106,17 @@ class MainActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(
                                 this@MainActivity,
-                                "Please enter number of the page you want to go",
+                                R.string.go_to_page_toast,
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                     } catch (e: Exception) {
                         Toast.makeText(
                             this@MainActivity,
-                            "Only valid page number is accepted",
+                            R.string.valid_search,
                             Toast.LENGTH_LONG
                         ).show()
                     }
-
-
                     return true
                 }
 
