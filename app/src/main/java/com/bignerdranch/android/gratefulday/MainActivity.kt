@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             saveResultNumber()
         }
         nextButton.setOnClickListener {
-            if (resultNumber in 1..27) {
+            if (resultNumber in 0..27) {
                 resultNumber++
             } else {
                 resultNumber = 0
