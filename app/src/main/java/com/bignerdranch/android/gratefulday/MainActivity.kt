@@ -7,35 +7,23 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import com.bignerdranch.android.gratefulday.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var chooseButton: Button
-    private lateinit var resultImage: ImageView
-    private lateinit var rankButton: Button
-    private lateinit var resetButton: Button
-    private lateinit var nextButton: ImageButton
-    private lateinit var previousButton: ImageButton
-
+    private lateinit var binding: ActivityMainBinding
     private var resultNumber: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        chooseButton = findViewById(R.id.choose_button)
-        resultImage = findViewById(R.id.day_image)
-        rankButton = findViewById(R.id.rank_button)
-        nextButton = findViewById(R.id.next_button)
-        previousButton = findViewById(R.id.previous_button)
-        resetButton = findViewById(R.id.reset_button)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        chooseButton.setOnClickListener {
+        binding.chooseButton.setOnClickListener {
             Toast.makeText(
                 this, "cám ơn, cám ơn, cám ơn :D",
                 Toast.LENGTH_SHORT
@@ -47,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             saveResultNumber()
         }
 
-        rankButton.setOnClickListener {
+        binding.rankButton.setOnClickListener {
             Toast.makeText(
                 this, "chúc bạn 1 ngày tốt lành :D",
                 Toast.LENGTH_SHORT
@@ -61,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             setImage()
             saveResultNumber()
         }
-        previousButton.setOnClickListener {
+        binding.previousButton.setOnClickListener {
             if (resultNumber in 1..28) {
                 resultNumber--
             } else {
@@ -71,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             setImage()
             saveResultNumber()
         }
-        nextButton.setOnClickListener {
+        binding.nextButton.setOnClickListener {
             if (resultNumber in 0..27) {
                 resultNumber++
             } else {
@@ -82,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             saveResultNumber()
         }
 
-        resetButton.setOnClickListener {
+        binding.resetButton.setOnClickListener {
             resultNumber = 0
             setImage()
         }
@@ -185,7 +173,7 @@ class MainActivity : AppCompatActivity() {
             28 -> R.drawable.grateful_28
             else -> R.drawable.grateful_0
         }
-        resultImage.setImageResource(drawableResource)
+        binding.dayImage.setImageResource(drawableResource)
     }
 }
 
