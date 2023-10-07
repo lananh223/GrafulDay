@@ -3,6 +3,9 @@ package com.bignerdranch.android.gratefulday
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -11,7 +14,12 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.FileProvider
 import com.bignerdranch.android.gratefulday.databinding.ActivityMainBinding
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -77,14 +85,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.dayImage.setOnLongClickListener {
-            val sendIntent:Intent = Intent().apply {
+            val image = BitmapFactory.decodeResource(
+                resources,
+                getDrawableResource())
+
+               val uri = getImageUri(image)
+            val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_STREAM, getDrawableResource())
+                putExtra(Intent.EXTRA_STREAM, uri)
                 type = "image/*"
             }
 
             val chooseIntent = Intent.createChooser(sendIntent, null)
             startActivity(chooseIntent)
+
             true
         }
     }
@@ -190,6 +204,19 @@ class MainActivity : AppCompatActivity() {
             28 -> R.drawable.grateful_28
             else -> R.drawable.grateful_0
         }
+    }
+
+    private fun getImageUri(image: Bitmap): Uri {
+        val tempFile = File.createTempFile("image", ".png")
+        val bytes = ByteArrayOutputStream()
+        image.compress(Bitmap.CompressFormat.PNG, 100, bytes)
+        val bitmapData = bytes.toByteArray()
+
+        val fileOutPut = FileOutputStream(tempFile)
+        fileOutPut.write(bitmapData)
+        fileOutPut.flush()
+        fileOutPut.close()
+        return FileProvider.getUriForFile(applicationContext, packageName +".fileprovider", tempFile)
     }
 }
 
