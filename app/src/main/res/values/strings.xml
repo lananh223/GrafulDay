@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">Grateful Day</string>
-    <string name="choose_button">Choose Button</string>
     <string name="day_image">Image of the day</string>
+    <string name="choose_button">Choose Button</string>
     <string name="previous_button">Previous</string>
     <string name="next_button">Next</string>
+    <string name="share_button">Share</string>
     <string name="random_choice">Chọn ngẫu nhiên</string>
     <string name="go_to">Đi tới trang</string>
     <string name="reset">Reset</string>
