@@ -2,6 +2,7 @@ package com.bignerdranch.android.gratefulday
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -74,6 +75,18 @@ class MainActivity : AppCompatActivity() {
             resultNumber = 0
             setImage()
         }
+
+        binding.dayImage.setOnLongClickListener {
+            val sendIntent:Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_STREAM, getDrawableResource())
+                type = "image/*"
+            }
+
+            val chooseIntent = Intent.createChooser(sendIntent, null)
+            startActivity(chooseIntent)
+            true
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -141,7 +154,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setImage() {
-        val drawableResource = when (resultNumber) {
+        binding.dayImage.setImageResource(getDrawableResource())
+    }
+
+    private fun getDrawableResource(): Int {
+        return when (resultNumber) {
             0 -> R.drawable.grateful_0
             1 -> R.drawable.grateful_01
             2 -> R.drawable.grateful_02
@@ -173,7 +190,6 @@ class MainActivity : AppCompatActivity() {
             28 -> R.drawable.grateful_28
             else -> R.drawable.grateful_0
         }
-        binding.dayImage.setImageResource(drawableResource)
     }
 }
 
